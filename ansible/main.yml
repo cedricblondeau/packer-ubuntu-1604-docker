@@ -6,6 +6,7 @@
   roles:
     - geerlingguy.nfs
     - geerlingguy.packer-debian
+    - docker
 
   tasks:
     - apt: "name={{ item }} state=installed"

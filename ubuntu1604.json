@@ -14,8 +14,9 @@
       "type": "ansible-local",
       "playbook_file": "ansible/main.yml",
       "role_paths": [
-        "/etc/ansible/roles/geerlingguy.packer-debian",
-        "/etc/ansible/roles/geerlingguy.nfs"
+        "/usr/local/etc/ansible/roles/geerlingguy.packer-debian",
+        "/usr/local/etc/ansible/roles/geerlingguy.nfs",
+        "ansible/roles/docker"
       ]
     },
     {
@@ -143,7 +144,7 @@
   ],
   "post-processors": [
     {
-      "output": "builds/{{.Provider}}-ubuntu1604.box",
+      "output": "builds/{{.Provider}}-ubuntu1604-docker.box",
       "type": "vagrant"
     }
   ]

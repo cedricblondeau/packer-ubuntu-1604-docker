@@ -1,0 +1,21 @@
+---
+- name: Install https packages
+  apt: pkg={{ item }}
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+
+- name: Install docker apt key
+  apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D state=present
+
+- name: Install docker apt repository
+  apt_repository: repo="deb https://apt.dockerproject.org/repo ubuntu-xenial main" state=present
+
+- name: Install docker engine
+  apt: name=docker-engine state=present
+
+- name: Install docker compose
+  apt: name=docker-compose state=present
+
+- name: Add vagrant user to docker group
+  user: name=vagrant groups=docker append=yes
